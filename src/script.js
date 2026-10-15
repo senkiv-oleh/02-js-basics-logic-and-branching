@@ -1,106 +1,196 @@
 /**
- * Task 1.1: Повернути тип значення (використовуючи typeof).
- * @param {*} value
- * @returns {string} (наприклад, 'number', 'string', 'boolean', 'object', 'undefined')
- */
-function getType(value) {
-  // TODO: Implement function
-}
-
-/**
- * Task 1.2: Перевірити, чи є значення строго null або undefined.
- * @param {*} value
+ * Task 2.1: Явне перетворення у булеве значення (boolean).
+ * @param {any} value
  * @returns {boolean}
  */
-function isNullOrUndefined(value) {
+function toBoolean(value) {
   // TODO: Implement function
 }
 
 /**
- * Task 1.3: Перетворити значення в число. Повернути NaN, якщо перетворення неможливе.
- * @param {*} value
+ * Task 2.2: Перетворення значення у число. Якщо результат NaN або не число, повернути 0.
+ * @param {any} value
  * @returns {number}
  */
-function convertToNumber(value) {
+function toNumberOrZero(value) {
   // TODO: Implement function
 }
 
 /**
- * Task 1.4: Перевірити, чи є значення саме NaN (використовуйте безпечну перевірку Number.isNaN).
- * @param {*} value
+ * Task 2.3: Перевірити, чи є значення хибним (falsy) в JavaScript.
+ * @param {any} value
  * @returns {boolean}
  */
-function isNaNValue(value) {
+function isFalsy(value) {
   // TODO: Implement function
 }
 
 /**
- * Task 1.5: Додати два значення, попередньо перетворивши їх на числа. Повернути NaN, якщо хоча б одне з них некоректне.
- * @param {*} a
- * @param {*} b
- * @returns {number}
+ * Task 2.4: Повернути value, якщо воно не є null і не є undefined, інакше повернути defaultValue.
+ * (Використовуйте оператор nullish coalescing `??`).
+ * @param {any} value
+ * @param {any} defaultValue
+ * @returns {any}
  */
-function safeAdd(a, b) {
+function getFallback(value, defaultValue) {
   // TODO: Implement function
 }
 
 /**
- * Task 1.6: Зробити першу літеру заданого рядка великою.
- * @param {string} str
- * @returns {string} Приклад: "hello" -> "Hello", "" -> ""
+ * Task 2.5: Визначити категорію числа:
+ * - "positive_even" — додатне і парне
+ * - "positive_odd"  — додатне і непарне
+ * - "negative"      — від'ємне
+ * - "zero"          — дорівнює 0
+ * - "invalid"       — якщо передано не число або NaN
+ * @param {any} num
+ * @returns {string}
  */
-function capitalizeWord(str) {
+function checkNumberCategory(num) {
   // TODO: Implement function
 }
 
 /**
- * Task 1.7: Перевірити, чи містить рядок підрядок без урахування регістру.
- * @param {string} str
- * @param {string} target
- * @returns {boolean} Приклад: ("Hello World", "world") -> true
+ * Task 2.6: Повернути назву дня тижня за його номером (1 -> "Monday", ..., 7 -> "Sunday").
+ * Для всіх інших значень повернути "Invalid day".
+ * (Використовуйте оператор switch).
+ * @param {number} day
+ * @returns {string}
  */
-function containsIgnoreCase(str, target) {
+function getDayName(day) {
   // TODO: Implement function
 }
 
 /**
- * Task 1.8: Округлити число до вказаної кількості знаків після коми.
- * @param {number} num
- * @param {number} decimals
- * @returns {number} Приклад: (3.14159, 2) -> 3.14
- */
-function roundToDecimal(num, decimals) {
-  // TODO: Implement function
-}
-
-/**
- * Task 1.9: Перевірити, чи є рік високосним.
- * Рік є високосним, якщо ділиться на 4, за винятком років століття (діляться на 100), які повинні ділитися на 400.
+ * Task 2.7: Перевірити, чи є рік високосним.
+ * Рік є високосним, якщо він ділиться на 4 і не ділиться на 100, АБО ділиться на 400.
  * @param {number} year
- * @returns {boolean} Приклад: 2000 -> true, 1900 -> false, 2024 -> true
+ * @returns {boolean}
  */
 function isLeapYear(year) {
   // TODO: Implement function
 }
 
 /**
- * Task 1.10: Перевірити валидність пароля (принаймні 8 символів І хоча б одна цифра).
- * @param {string} password
+ * Task 2.8: Оцінювання успішності за результатом (score від 0 до 100):
+ * - 90-100: "A"
+ * - 80-89:  "B"
+ * - 70-79:  "C"
+ * - 60-69:  "D"
+ * - 0-59:   "F"
+ * - Якщо score поза межами 0-100 або не є числом: "Invalid score"
+ * @param {number} score
+ * @returns {string}
+ */
+function getGrade(score) {
+  // TODO: Implement function
+}
+
+/**
+ * Task 2.9: Обчислити підсумкову ціну зі знижкою:
+ * - VIP покупці (isVIP === true): знижка 20% при покупці від 100$, інакше 10%.
+ * - Звичайні покупці: знижка 10% при покупці від 200$, інакше знижки немає (0%).
+ * @param {boolean} isVIP
+ * @param {number} totalAmount
+ * @returns {number}
+ */
+function calculateDiscount(isVIP, totalAmount) {
+  // TODO: Implement function
+}
+
+/**
+ * Task 2.10: Повернути команду для світлофора за кольором (незалежно від регістру):
+ * - "red"    -> "STOP"
+ * - "yellow" -> "READY"
+ * - "green"  -> "GO"
+ * - будь-який інший колір чи тип -> "UNKNOWN"
+ * @param {string} color
+ * @returns {string}
+ */
+function getTrafficSignal(color) {
+  // TODO: Implement function
+}
+
+/**
+ * Task 2.11: Перевірити допуск до перегляду фільму:
+ * - Якщо фільм НЕ має обмеження (isRestricted === false) -> true
+ * - Якщо фільм обмежений: допуск є, якщо age >= 18 АБО (age >= 13 І hasParent === true)
+ * @param {number} age
+ * @param {boolean} hasParent
+ * @param {boolean} isRestricted
  * @returns {boolean}
  */
-function isValidPassword(password) {
+function canAccessMovie(age, hasParent, isRestricted) {
+  // TODO: Implement function
+}
+
+/**
+ * Task 2.12: Повернути пору року за номером місяця (1-12):
+ * - 12, 1, 2:   "Winter"
+ * - 3, 4, 5:    "Spring"
+ * - 6, 7, 8:    "Summer"
+ * - 9, 10, 11:  "Autumn"
+ * - Інше значення: "Invalid month"
+ * @param {number} month
+ * @returns {string}
+ */
+function getSeason(month) {
+  // TODO: Implement function
+}
+
+/**
+ * Task 2.13: Простий калькулятор для операцій "+", "-", "*", "/":
+ * - Якщо операція "/" і b === 0 -> повернути "Error: Division by zero"
+ * - Якщо операція невідома -> повернути "Error: Invalid operation"
+ * @param {number} a
+ * @param {number} b
+ * @param {string} operation
+ * @returns {number|string}
+ */
+function simpleCalculator(a, b, operation) {
+  // TODO: Implement function
+}
+
+/**
+ * Task 2.14: Форматування ціни з валютою:
+ * - Якщо price некоректне (NaN, null, undefined, typeof !== 'number' або price < 0), повернути "Invalid price"
+ * - currency за замовчуванням "$" (якщо не передано або порожній рядок)
+ * - Приклад: (100, "€") -> "€100", (50) -> "$50"
+ * @param {number} price
+ * @param {string} [currency]
+ * @returns {string}
+ */
+function formatPrice(price, currency) {
+  // TODO: Implement function
+}
+
+/**
+ * Task 2.15: Перевірка порівняння двох значень:
+ * - "strict" — якщо значення строго рівні (a === b)
+ * - "loose" — якщо значення нестрого рівні (a == b), але НЕ строго рівні
+ * - "none" — якщо значення не рівні
+ * @param {any} a
+ * @param {any} b
+ * @returns {string}
+ */
+function checkEqualityType(a, b) {
   // TODO: Implement function
 }
 
 module.exports = {
-  getType,
-  isNullOrUndefined,
-  convertToNumber,
-  isNaNValue,
-  safeAdd,
-  capitalizeWord,
-  containsIgnoreCase,
-  roundToDecimal,
+  toBoolean,
+  toNumberOrZero,
+  isFalsy,
+  getFallback,
+  checkNumberCategory,
+  getDayName,
   isLeapYear,
-  isValidPassword
+  getGrade,
+  calculateDiscount,
+  getTrafficSignal,
+  canAccessMovie,
+  getSeason,
+  simpleCalculator,
+  formatPrice,
+  checkEqualityType
 };

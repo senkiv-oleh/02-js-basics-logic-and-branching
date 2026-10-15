@@ -1,0 +1,44 @@
+name: Autograding & Test Checks
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5 # Захист від нескінченних циклів у коді студентів
+
+    steps:
+      # 1. Клонуємо код репозиторію студента
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      # 2. Налаштовуємо середовище Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node_version: 20
+          cache: 'npm'
+
+      # 3. Встановлюємо залежності
+      - name: Install dependencies
+        run: npm ci
+
+      # 4. Перезаписуємо папки з тестами еталонними тестами з вашого репозиторію
+      - name: Fetch original tests
+        run: |
+          git clone --depth=1 https://github.com/senkiv-oleh/01-js-basics-types.git temp_tests
+          cp -r temp_tests/tests/. ./tests/
+          rm -rf temp_tests
+
+      # 5. Перевірка лінтером (якщо налаштований у package.json)
+      - name: Run Linter
+        run: npm run lint --if-present
+
+      # 6. Запуск автотестів
+      - name: Run unit tests
+        run: npm test -- --watch=false
+        

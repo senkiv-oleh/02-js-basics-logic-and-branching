@@ -30,7 +30,7 @@ jobs:
       # 4. Перезаписуємо папки з тестами еталонними тестами з вашого репозиторію
       - name: Fetch original tests
         run: |
-          git clone --depth=1 https://github.com/senkiv-oleh/02-js-basics-logic-and-branching.git temp_tests
+          git clone --depth=1 https://github.com/senkiv-oleh/03-js-basics-loops.git temp_tests
           cp -r temp_tests/tests/. ./tests/
           rm -rf temp_tests
 

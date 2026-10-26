@@ -105,7 +105,7 @@ git commit -m "feat: completed all 15 tasks"
 git push origin main
 ```
 
-2. Відкрийте браузер і перейдіть на сторінку **оригінального репозиторію викладача** (`github.com/senkiv-oleh/02-js-basics-logic-and-branching`).
+2. Відкрийте браузер і перейдіть на сторінку **оригінального репозиторію викладача** (`github.com/senkiv-oleh/03-js-basics-loops`).
 
 3. Перейдіть у вкладку **Pull requests** та натисніть **New pull request**.
 

@@ -4,7 +4,7 @@
  * @returns {boolean}
  */
 function toBoolean(value) {
-  // TODO: Implement function
+  return Boolean(value);
 }
 
 /**
@@ -13,7 +13,13 @@ function toBoolean(value) {
  * @returns {number}
  */
 function toNumberOrZero(value) {
-  // TODO: Implement function
+  const num = Number(value);
+
+  if (Number.isNaN(num)) {
+    return 0;
+  } else {
+    return num;
+  }
 }
 
 /**
@@ -22,7 +28,7 @@ function toNumberOrZero(value) {
  * @returns {boolean}
  */
 function isFalsy(value) {
-  // TODO: Implement function
+  return !value;
 }
 
 /**
@@ -33,7 +39,7 @@ function isFalsy(value) {
  * @returns {any}
  */
 function getFallback(value, defaultValue) {
-  // TODO: Implement function
+  return value ?? defaultValue;
 }
 
 /**
@@ -47,7 +53,19 @@ function getFallback(value, defaultValue) {
  * @returns {string}
  */
 function checkNumberCategory(num) {
-  // TODO: Implement function
+  if (typeof num !== 'number' || Number.isNaN(num)) {
+    return 'invalid';
+  }
+
+  if (num === 0) {
+    return 'zero';
+  }
+
+  if (num > 0) {
+    return num % 2 === 0 ? 'positive_even' : 'positive_odd';
+  }
+
+  return 'negative';
 }
 
 /**
@@ -58,7 +76,24 @@ function checkNumberCategory(num) {
  * @returns {string}
  */
 function getDayName(day) {
-  // TODO: Implement function
+  switch (day) {
+    case 1:
+      return "Monday";
+    case 2:
+      return "Tuesday";
+    case 3:
+      return "Wednesday";
+    case 4:
+      return "Thursday";
+    case 5:
+      return "Friday";
+    case 6:
+      return "Saturday";
+    case 7:
+      return "Sunday";
+    default:
+      return "Invalid day";
+  }
 }
 
 /**
@@ -68,7 +103,11 @@ function getDayName(day) {
  * @returns {boolean}
  */
 function isLeapYear(year) {
-  // TODO: Implement function
+  if (typeof year !== 'number' || Number.isNaN(year)) {
+    return false;
+  }
+
+  return (year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0);
 }
 
 /**
@@ -83,7 +122,18 @@ function isLeapYear(year) {
  * @returns {string}
  */
 function getGrade(score) {
-  // TODO: Implement function
+  if (typeof score !== 'number' || Number.isNaN(score) || score < 0 || score > 100) {
+    return "Invalid score";
+  }
+  if (score >= 90)
+    return "A";
+  if (score >= 80)
+    return "B";
+  if (score >= 70)
+    return "C";
+  if (score >= 60)
+    return "D";
+  return "F";
 }
 
 /**
@@ -95,7 +145,22 @@ function getGrade(score) {
  * @returns {number}
  */
 function calculateDiscount(isVIP, totalAmount) {
-  // TODO: Implement function
+  if (typeof totalAmount !== 'number' || Number.isNaN(totalAmount) || totalAmount < 0) {
+    return 0; // Invalid totalAmount, return 0
+  }
+  if (isVIP) {
+    if (totalAmount >= 100) {
+      return totalAmount * 0.8; // 20% discount
+    } else {
+      return totalAmount * 0.9; // 10% discount
+    }
+  } else {
+    if (totalAmount >= 200) {
+      return totalAmount * 0.9; // 10% discount
+    } else {
+      return totalAmount; // No discount
+    }
+  }
 }
 
 /**
@@ -108,7 +173,20 @@ function calculateDiscount(isVIP, totalAmount) {
  * @returns {string}
  */
 function getTrafficSignal(color) {
-  // TODO: Implement function
+  if (typeof color !== 'string') {
+    return "UNKNOWN";
+  }
+  color = color.toLowerCase();
+  switch (color) {
+    case "red":
+      return "STOP";
+    case "yellow":
+      return "READY";
+    case "green":
+      return "GO";
+    default:
+      return "UNKNOWN";
+  }
 }
 
 /**
@@ -121,7 +199,16 @@ function getTrafficSignal(color) {
  * @returns {boolean}
  */
 function canAccessMovie(age, hasParent, isRestricted) {
-  // TODO: Implement function
+  if (!isRestricted) {
+    return true;
+  }
+  if (age >= 18) {
+    return true;
+  }
+  if (age >= 13 && hasParent === true) {
+    return true;
+  }
+  return false;
 }
 
 /**
@@ -135,7 +222,22 @@ function canAccessMovie(age, hasParent, isRestricted) {
  * @returns {string}
  */
 function getSeason(month) {
-  // TODO: Implement function
+  if (typeof month !== 'number' || Number.isNaN(month)) {
+    return "Invalid month";
+  }
+  if (month === 12 || month === 1 || month === 2) {
+    return "Winter";
+  }
+  if (month >= 3 && month <= 5) {
+    return "Spring";
+  }
+  if (month >= 6 && month <= 8) {
+    return "Summer";
+  }
+  if (month >= 9 && month <= 11) {
+    return "Autumn";
+  }
+  return "Invalid month";
 }
 
 /**
@@ -148,9 +250,24 @@ function getSeason(month) {
  * @returns {number|string}
  */
 function simpleCalculator(a, b, operation) {
-  // TODO: Implement function
-}
+ 
 
+  switch (operation) {
+    case "+":
+      return a + b;
+    case "-":
+      return a - b;
+    case "*":
+      return a * b;
+    case "/":
+      if (b === 0) {
+        return "Error: Division by zero";
+      }
+      return a / b;
+    default:
+      return "Error: Invalid operation";
+  }
+}
 /**
  * Task 2.14: Форматування ціни з валютою:
  * - Якщо price некоректне (NaN, null, undefined, typeof !== 'number' або price < 0), повернути "Invalid price"
@@ -161,7 +278,13 @@ function simpleCalculator(a, b, operation) {
  * @returns {string}
  */
 function formatPrice(price, currency) {
-  // TODO: Implement function
+  if (typeof price !== 'number' || Number.isNaN(price) || price < 0) {
+    return "Invalid price";
+  }
+  if (currency === undefined || currency === "") {
+    currency = "$";
+  }
+  return `${currency}${price}`;
 }
 
 /**
@@ -174,7 +297,13 @@ function formatPrice(price, currency) {
  * @returns {string}
  */
 function checkEqualityType(a, b) {
-  // TODO: Implement function
+ if (a === b) {
+    return "strict";
+  }
+  if (a == b) {
+    return "loose";
+  }
+  return "none";
 }
 
 module.exports = {
